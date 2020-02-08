@@ -1,0 +1,204 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	background-color: black;
+
+	overflow: hidden;
+}
+
+.wp {
+	background-image: url('../images/wallpaper.jpg');
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	top: 0;
+
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	animation-fill-mode: forwards;
+	animation-duration: .4s;
+	animation-timing-function: ease-out;
+
+	filter: blur(20px);
+}
+
+.loadlayer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 9999;
+
+	animation-name: 'fadeout';
+	animation-duration: 0.4s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.loadlayer > .overlay {
+	background: white;
+	opacity: 0.3;
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.loadlayer > .box {
+	width: 256px;
+	height: 256px;
+
+	background: white;
+	opacity: 0.5;
+
+	position: absolute;
+
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, -50%);
+	border-radius: 25px;
+}
+
+.loadlayer > .bar {
+	position: absolute;
+	width: 256px;
+	height: 256px;
+
+	left: 50%;
+	top: 50%;
+	
+	transform: translate(-50%, -50%) scale(0.5);
+	border: 15px gray solid;
+	border-top: 15px rgba(0, 0, 0, 0) solid;
+	border-right: 15px rgba(0, 0, 0, 0) solid;
+	border-radius: 50%;
+
+	animation-name: rot; 
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-duration: 1s;
+}
+
+.xLayer {
+	position: absolute;
+	top: -1000%;
+	right: 0;
+	bottom: 1000%;
+	left: 0;
+
+	animation-duration: .8s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.main {
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	right: 10%;
+	bottom: 10%;
+
+	background: black;
+	opacity: 0.3;
+	border: 1px white solid;
+	border-radius: 45px;
+
+	padding: 12px;
+}
+.layout {
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	right: 10%;
+	bottom: 10%;
+
+	padding: 22px;
+}
+
+.icon {
+	position: relative;
+	display: inline;
+	padding: 12px;
+}
+
+.icon > img {
+	width: 128px;
+	height: 128px;
+	border-radius: 45px;
+	box-shadow: 0px 0px 15px gray;
+
+	transition: .4s ease all;
+	cursor: pointer;
+}
+
+.icon > span {
+	color: white;
+	font-family: Segoe UI;
+	text-shadow: 0px 0px 2px black;
+	position: absolute;
+	top: 100%;
+	left: 40%;
+}
+
+.icon > img:hover {
+	transform: scale(1.6);
+	border-radius: 25px;
+	box-shadow: 0px 0px 10px white;
+}
+
+@keyframes blur {
+	0% {
+		filter: blur(0px);
+	}
+	100% {
+		filter: blur(60px);
+	}
+}
+@keyframes unblur {
+	0% {
+		filter: blur(50px);
+	}
+	100% {
+		filter: blur(0px);
+	}
+}
+
+@keyframes rot {
+	0% {
+		transform: translate(-50%, -50%) scale(0.5) rotateZ(0deg);
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(0.5) rotateZ(360deg);
+	}
+}
+
+@keyframes fadeout {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes swipe {
+	0% {
+		bottom: 1000%;
+		top: -1000%;
+	}
+	70% {
+		top: 10%;
+		bottom: -10%;
+	}
+	100% {
+		top: 0;
+		bottom: 0;
+	}
+}

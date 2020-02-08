@@ -1,1 +1,52 @@
-Work in progress...
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>@sdam64 — Projects</title>
+		<link rel="stylesheet" href="styles/main.css">
+	</head>
+	<body>
+		<div class="loadlayer">
+			<div class="overlay"> </div>
+			<div class="box"> </div>
+			<div class="bar"> </div>
+		</div>
+		<div class="wp"> </div>
+
+		<div class="xLayer">
+			<div class="main"></div>
+			<div class="layout">
+				<div class="icon">
+					<img src="images/ts_stands.jpg" alt="">
+				</div>
+			</div>
+		</div>
+
+		<script>
+			let getClass_first = (i) => document.getElementsByClassName(i)[0]; 
+			let delayed_remove = function(e, f, t, c) {
+				(new Promise(function(resolve){
+					f(e); setTimeout(_ => e.remove(), t); resolve(e, f, t)
+				})).then(function(_e, _f, _t){
+					if (c) {
+						c(_e, _f, _t)
+					}
+				})
+			}
+
+			document.body.onload = function()
+			{
+				setTimeout(function(){
+					delayed_remove(getClass_first('loadlayer'), function(el){
+						el.style.animationName = 'fadeout'
+						getClass_first('wp').style.animationName = 'unblur';
+						setTimeout(()=>{
+							getClass_first('wp').style.animationDuration = '2s';
+							getClass_first('wp').style.animationName = 'blur'}, 400);
+
+							getClass_first('xLayer').style.animationName = 'swipe';
+					}, 400)
+				}, 400)
+			}
+		</script>
+	</body>
+</html>
