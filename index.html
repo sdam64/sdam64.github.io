@@ -15,8 +15,11 @@
 		<div class="xLayer">
 			<div class="main"></div>
 			<div class="layout">
-				<div class="icon">
+				<div class="icon"  onclick="_open('https://sdam64.github.io/ts_stands_project/', this)">
 					<img src="images/ts_stands.jpg" alt="">
+				</div>
+				<div class="icon" onclick="_open('https://discord.gg/mRNxWA', this)">
+					<img src="images/ts_discord.jpg" alt="">
 				</div>
 			</div>
 		</div>
@@ -46,6 +49,14 @@
 							getClass_first('xLayer').style.animationName = 'swipe';
 					}, 400)
 				}, 400)
+			}
+
+			function _open(url, elem)
+			{
+				console.log(elem.children[0])
+				elem.children[0].style.animationName = "open";
+
+				setTimeout(() => window.location.assign(url), 500)
 			}
 		</script>
 	</body>
